@@ -154,7 +154,7 @@ data.forEach(version => {
 
       let errorMessage = await page.$('#errorMsgField');
 
-      expect(await errorMessage?.textContent()).toEqual('Divide by zero error!');
+      expect(await errorMessage?.textContent(), 'No error message').toEqual('Divide by zero error!');
     })
   });
 
@@ -173,7 +173,26 @@ data.forEach(version => {
 
       let errorMessage = await page.$('#errorMsgField');
 
-      expect(await errorMessage?.textContent()).toEqual('Number 1 is not a number');
+      expect(await errorMessage?.textContent(), 'No error message').toEqual('Number 1 is not a number');
+    })
+  });
+
+  test.describe(version + ': Add', () => {
+    test('Adding 5 and a results in error "Number 2 is not a number"', async ({ page }) => {
+      let calculatorPage = new CalculatorPage(page);
+
+      await calculatorPage.navigate();
+      await calculatorPage.getVersion(version);
+      await calculatorPage.click('#number1Field');
+      await calculatorPage.fillField('#number1Field', '5');
+      await calculatorPage.click('#number2Field');
+      await calculatorPage.fillField('#number2Field', 'a');
+      await calculatorPage.selectOption('select[name="selectOperation"]', '4');
+      await calculatorPage.click('#calculateButton');
+
+      let errorMessage = await page.$('#errorMsgField');
+
+      expect(await errorMessage?.textContent(), 'No error message').toEqual('Number 2 is not a number');
     })
   });
 })
