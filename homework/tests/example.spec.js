@@ -16,7 +16,7 @@ const data = [
 ]
 
 data.forEach(version => {
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Concatenate', () => {
     test('Concatenating 2 and 3 results in 23', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -50,7 +50,7 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Subtract', () => {
     test('Subtracting 1 out of 3 resultns in 2', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -67,7 +67,7 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Multiply', () => {
     test('Multiplying 2 and 3 resultns in 6', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -85,7 +85,7 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Divide', () => {
     test('Dividing 6 out of 2 resultns in 3', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -102,8 +102,8 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
-    test('Dividing 2.2 out of 1.5 resultns in 1.4666666666', async ({ page }) => {
+  test.describe(version + ': Divide', () => {
+    test('Dividing 2.2 out of 1.5 resultns in 1.4666666666666668', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
       await calculatorPage.navigate();
@@ -115,11 +115,11 @@ data.forEach(version => {
       await calculatorPage.selectOption('select[name="selectOperation"]', '3');
       await calculatorPage.click('#calculateButton');
 
-      await expect(page.locator('#numberAnswerField')).toHaveValue('1.46666666');
+      await expect(page.locator('#numberAnswerField')).toHaveValue('1.4666666666666668');
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Divide', () => {
     test('Dividing empty field results in error', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -138,7 +138,7 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Divide', () => {
     test('Dividing 6 out of 0 resultns in error', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
@@ -177,7 +177,7 @@ data.forEach(version => {
     })
   });
 
-  test.describe(version + ': Add', () => {
+  test.describe(version + ': Concatanate', () => {
     test('Adding 5 and a results in error "Number 2 is not a number"', async ({ page }) => {
       let calculatorPage = new CalculatorPage(page);
 
