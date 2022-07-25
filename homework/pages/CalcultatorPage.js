@@ -22,6 +22,10 @@ class CalculatorPage {
   async selectOption(element, option) {
     await this.page.locator(element).selectOption(option);
   }
+
+  async 
 }
+
+
 
 module.exports = { CalculatorPage };
